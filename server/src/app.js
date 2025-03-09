@@ -1,6 +1,7 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const googleAuth = require("./routes/auth/googleAuth.js");
+const lockRoutes = require("./routes/lock.js");
 
 const app = express();
 app.use(express.json());
@@ -12,7 +13,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", googleAuth);
-app.use("/lock");
+app.use("/lock", lockRoutes);
 
 // /get -> all the locks present for the email
 // /post -> add a lock {pairing} => check if email != null (already paired)
