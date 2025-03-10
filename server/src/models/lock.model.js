@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 
 const lockSchema = new mongoose.Schema({
-    id: {
-        type: String,
+    pairingCode: {
+        type: Number,
+        length: 6,
         required: true,
     },
     password: {
@@ -13,14 +14,6 @@ const lockSchema = new mongoose.Schema({
         type: Boolean,
         default: true,
     },
-    email: {
-        type: String,
-        default: null,
-    },
-}, { timestamps: true });
+});
 
-
-
-const lock = mongoose.model("lock", lockSchema);
-
-module.exports = lock;
+module.exports = mongoose.model("lock", lockSchema);
