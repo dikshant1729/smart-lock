@@ -17,6 +17,12 @@ module.exports = async (req, res) => {
             { $push: { locks: { name, id: lock._id } } }
         );
 
+        // redirect on the passward page in frontend
+        /*
+        if(lock.password == null){
+            res.redirect("http://localhost:3000/lock/password")
+        }
+        */
         res.status(200).json({ message: "Lock added Successfully" });
     } catch (err) {
         console.log("addLock.js", err);
