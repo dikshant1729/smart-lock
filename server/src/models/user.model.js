@@ -6,7 +6,12 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     locks: {
-        type: [String],
+        type: [
+            {
+                name: String,
+                id: mongoose.Schema.ObjectId,
+            },
+        ],
     },
 });
 

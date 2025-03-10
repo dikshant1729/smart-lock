@@ -2,6 +2,7 @@ const { Router } = require("express");
 const google = require("../controllers/auth/google");
 const googleCallback = require("../controllers/auth/googleCallback");
 const me = require("../controllers/auth/me");
+const authenticate = require("../middleware/authenticate");
 const authRouter = Router();
 
 //@route    GET /api/auth/login
@@ -14,6 +15,6 @@ authRouter.get("/callback", googleCallback);
 
 //@route    GET /api/auth
 //@desc     fetch user from the db
-authRouter.get("/", me);
+authRouter.get("/", authenticate, me);
 
 module.exports = authRouter;

@@ -1,24 +1,30 @@
 const express = require("express");
+
+const authenticate = require("../middleware/authenticate");
+
+const getLock = require("../controllers/lock/getLock");
+const addLock = require("../controllers/lock/addLock");
+
 const router = express.Router();
 
 //@route    GET /api/lock
 //@desc     fetch all the lock present for the user
-router.get("/");
+router.get("/", authenticate, getLock);
 
 //@route    POST /api/lock
 //@desc     add a lock to the user
-router.post("/");
+router.post("/", authenticate, addLock);
 
 //@route    POST /api/lock/password
 //@desc     add a password for the lock if the password is null
-router.post("/password");
+router.post("/password", authenticate);
 
 //@route    DELETE /api/lock
 //@desc     delete a lock from the user
-router.delete("/");
+router.delete("/", authenticate);
 
 //@route    GET /api/lock/open
 //@desc     open the lock for the user if he is in the range
-router.get("/open");
+router.get("/open", authenticate);
 
 module.exports = router;

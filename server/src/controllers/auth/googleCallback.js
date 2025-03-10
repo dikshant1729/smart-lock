@@ -40,7 +40,7 @@ module.exports = async (req, res) => {
         });
         res.status(200).json({ user: userData.user });
     } catch (err) {
-        console.log(err.message);
+        console.log("googleCallback.js", err);
         res.status(500).json({ message: "failed" });
     }
 };
